@@ -22,11 +22,9 @@ export const firebaseConfig = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      <Elements stripe={stripePromise}>
-        <App />
-      </Elements>
-    </FirebaseAppProvider>
+    <Elements stripe={stripePromise}>
+      <App />
+    </Elements>
   </React.StrictMode>,
   document.getElementById("root")
 );

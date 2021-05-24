@@ -88,7 +88,7 @@ function Home() {
           This demo is running in Stripe test mode, so feel free to submit
           payments with testing cards.
         </p>
-      </div>
+        <div/>
     </>
   );
 }

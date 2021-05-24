@@ -8,9 +8,7 @@ export function Checkout() {
   const [product, setProduct] = useState({
     name: "Hat",
     description: "Pug hat. A hat your pug will love.",
-    images: [
-      "https://images.unsplash.com/photo-1517423568366-8b83523034fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-    ],
+    images: ["your-img"],
     amount: 799,
     currency: "usd",
     quantity: 0,
@@ -54,14 +52,4 @@ export function Checkout() {
       </button>
     </>
   );
-}
-
-export function CheckoutSuccess() {
-  const url = window.location.href;
-  const sessionId = new URL(url).searchParams.get("session_id");
-  return <h3>Checkout was a Success! {sessionId}</h3>;
-}
-
-export function CheckoutFail() {
-  return <h3>Checkout failed!</h3>;
 }
