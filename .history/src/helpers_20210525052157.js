@@ -1,6 +1,5 @@
 import { auth } from "./firebase";
-//const API = "http://localhost:3333";
-const API = "https://stripe-payment-server-app.herokuapp.com/";
+const API = "http://localhost:3333";
 
 /**
  * A helper function to fetch data from your API.
@@ -9,7 +8,8 @@ export async function fetchFromAPI(endpointURL, opts) {
   const { method, body } = { method: "POST", body: null, ...opts };
 
   const user = auth.currentUser;
-  const token = user && (await user.getIdToken());
+  const token =
+    user && (await user.currentUser.getIdToken(/* forceRefresh */ true));
 
   const res = await fetch(`${API}/${endpointURL}`, {
     method,

@@ -1,6 +1,5 @@
 import { auth } from "./firebase";
-//const API = "http://localhost:3333";
-const API = "https://stripe-payment-server-app.herokuapp.com/";
+const API = "http://localhost:3333";
 
 /**
  * A helper function to fetch data from your API.
