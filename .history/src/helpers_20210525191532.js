@@ -17,7 +17,7 @@ export async function fetchFromAPI(endpointURL, opts) {
     ...(body && { body: JSON.stringify(body) }),
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 

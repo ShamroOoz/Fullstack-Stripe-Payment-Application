@@ -11,6 +11,7 @@ export async function fetchFromAPI(endpointURL, opts) {
 
   const user = auth.currentUser;
   const token = user && (await user.getIdToken());
+  console.log(token);
 
   const res = await fetch(`${API}/${endpointURL}`, {
     method,

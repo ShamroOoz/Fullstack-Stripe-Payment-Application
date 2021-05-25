@@ -44,7 +44,7 @@ function SaveCard(props) {
   const [wallet, setWallet] = useState([]);
 
   const getWallet = useCallback(async () => {
-    if (user) {
+    if (user?.data) {
       const paymentMethods = await fetchFromAPI("wallet", { method: "GET" });
       setWallet(paymentMethods);
     }

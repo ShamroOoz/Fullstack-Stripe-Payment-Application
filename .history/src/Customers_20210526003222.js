@@ -38,22 +38,25 @@ export function SignOut(props) {
 function SaveCard(props) {
   const stripe = useStripe();
   const elements = useElements();
-  const { data: user } = useUser();
+  const { data } = useUser();
 
   const [setupIntent, setSetupIntent] = useState();
   const [wallet, setWallet] = useState([]);
 
   const getWallet = useCallback(async () => {
-    if (user) {
+    if (data) {
       const paymentMethods = await fetchFromAPI("wallet", { method: "GET" });
       setWallet(paymentMethods);
     }
-  }, [user]);
+  }, [data]);
 
   // Get the user's wallet on mount
   useEffect(() => {
-    getWallet();
-  }, [user, getWallet]);
+    if (data) {
+      // getWallet();
+      console.log(data);
+    }
+  }, [data, getWallet]);
 
   // Create the setup intent
   const createSetupIntent = async (event) => {

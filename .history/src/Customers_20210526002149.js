@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, useCallback } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { fetchFromAPI } from "./helpers";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useUser, AuthCheck } from "reactfire";
@@ -38,22 +38,28 @@ export function SignOut(props) {
 function SaveCard(props) {
   const stripe = useStripe();
   const elements = useElements();
-  const { data: user } = useUser();
+  const user = useUser();
 
   const [setupIntent, setSetupIntent] = useState();
   const [wallet, setWallet] = useState([]);
 
-  const getWallet = useCallback(async () => {
+  // Get the user's wallet on mount
+  useEffect(() => {
+    async function fetchMyAPI() {
+      if (user) {
+        const paymentMethods = await fetchFromAPI("wallet", { method: "GET" });
+        setWallet(paymentMethods);
+      }
+    }
+    fetchMyAPI();
+  }, [user, getWallet]);
+
+  const getWallet = async () => {
     if (user) {
       const paymentMethods = await fetchFromAPI("wallet", { method: "GET" });
       setWallet(paymentMethods);
     }
-  }, [user]);
-
-  // Get the user's wallet on mount
-  useEffect(() => {
-    getWallet();
-  }, [user, getWallet]);
+  };
 
   // Create the setup intent
   const createSetupIntent = async (event) => {

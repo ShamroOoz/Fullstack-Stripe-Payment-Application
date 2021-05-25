@@ -147,11 +147,11 @@ function SubscribeToPlan(props) {
           <button
             className={
               "btn " +
-              (plan === "price_1IuoRsLMgvU1cp6VJ5Xw8PxR"
+              (plan === "plan_HD6rlaovzAiM7B"
                 ? "btn-primary"
                 : "btn-outline-primary")
             }
-            onClick={() => setPlan("price_1IuoRsLMgvU1cp6VJ5Xw8PxR")}
+            onClick={() => setPlan("plan_HD6rlaovzAiM7B")}
           >
             Choose Quarterly $50/q
           </button>

@@ -52,7 +52,8 @@ function SaveCard(props) {
 
   // Get the user's wallet on mount
   useEffect(() => {
-    getWallet();
+    // getWallet();
+    console.log(user);
   }, [user, getWallet]);
 
   // Create the setup intent

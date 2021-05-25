@@ -38,7 +38,7 @@ export function SignOut(props) {
 function SaveCard(props) {
   const stripe = useStripe();
   const elements = useElements();
-  const { data: user } = useUser();
+  const user = useUser();
 
   const [setupIntent, setSetupIntent] = useState();
   const [wallet, setWallet] = useState([]);
@@ -48,8 +48,7 @@ function SaveCard(props) {
       const paymentMethods = await fetchFromAPI("wallet", { method: "GET" });
       setWallet(paymentMethods);
     }
-  }, [user]);
-
+  });
   // Get the user's wallet on mount
   useEffect(() => {
     getWallet();
